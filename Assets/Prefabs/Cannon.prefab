@@ -225,6 +225,8 @@ GameObject:
   - component: {fileID: 5689961776120163147}
   - component: {fileID: 1735824030160433457}
   - component: {fileID: 4500280782277491648}
+  - component: {fileID: 1238695793}
+  - component: {fileID: 1238695792}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Player
@@ -283,9 +285,84 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletPrefab: {fileID: 2836644630142805888, guid: 1df72dfebc8e49e438c74ea0cdb9b644, type: 3}
   _shootPosition: {fileID: 7684858841236697523}
-  _shootPower: 2
-  slider: {fileID: 0}
-  _sliderDragPower: 10
+  _shootPower: 1.7
+  testSlider: {fileID: 0}
+--- !u!114 &1238695793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5025206544124424689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28738db9b53a7fd43bb4e21294f65b31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnCannonReloadFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ToShoot
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DragMouseObject, Assembly-CSharp
+        m_MethodName: CancelTouch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DragMouseObject, Assembly-CSharp
+        m_MethodName: CancelTouch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ToShoot
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DragMouseObject, Assembly-CSharp
+        m_MethodName: CancelTouch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ToShoot
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!65 &1238695792
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5025206544124424689}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.68860435, y: 0.94933087, z: 1.8667756}
+  m_Center: {x: -0.03997588, y: 0.766942, z: -0.008466836}
 --- !u!1 &6224461408022536952
 GameObject:
   m_ObjectHideFlags: 0

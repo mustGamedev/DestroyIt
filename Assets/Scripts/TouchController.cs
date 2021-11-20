@@ -1,14 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TouchController : MonoBehaviour
 {
-    [SerializeField] private GameObject _sliderContainer;
-    [SerializeField] private bool canShoot = true;
-
-    private void Awake()
-    {
-        //_sliderContainer = transform.GetChild(0).gameObject;
-    }
+    [SerializeField] private Slider _sliderContainer;
+    [SerializeField] private bool canShoot;
 
     private void Update()
     {
@@ -16,22 +12,30 @@ public class TouchController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("d");
-                _sliderContainer.SetActive(true);
+                //Debug.Log("d");
+                _sliderContainer.gameObject.SetActive(true);
+                _sliderContainer.value = _sliderContainer.minValue;
             }
             if (Input.GetMouseButtonUp(0))
             {
-                Debug.Log("u");
-                _sliderContainer.SetActive(false);
-                //fire
+                //Debug.Log("u");
+                _sliderContainer.gameObject.SetActive(false);
                 CannonController.instance.CannonShoot();
                 canShoot = false; // only one shot lock
             }
         }
     }
 
-    public void OnCanonReloadFinished()
+
+    #region AnimatorValues
+    public void OnCanonReloaded()
     {
         canShoot = true;
+    }
+    #endregion
+
+    public void OnNedolet()
+    {
+        gameObject.GetComponent<Animator>().SetTrigger("ToReload");
     }
 }
