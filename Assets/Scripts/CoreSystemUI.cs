@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 public class CoreSystemUI : MonoBehaviour
 {
     public static CoreSystemUI instance;
-
     private GameObject _winPanel;
     private GameObject _lostPanel;
 
@@ -14,7 +13,8 @@ public class CoreSystemUI : MonoBehaviour
         _winPanel = transform.GetChild(0).gameObject;
         _lostPanel = transform.GetChild(1).gameObject;
     }
-    ///<summary>Despawn object with zero velocity</summary>
+
+    ///<summary>Set final UI panel game state. True - win, False - lost</summary>
     public void SetGameCoreState(bool isGameCompleted)
     {
         if(isGameCompleted == true)
@@ -29,10 +29,12 @@ public class CoreSystemUI : MonoBehaviour
         }
     }
 
-    ///<summary>Despawn object with zero velocity</summary>
+    #region  UIButton
+    ///<summary>Restarts current game level</summary>
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    #endregion
 
 }

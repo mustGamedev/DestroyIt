@@ -4,24 +4,23 @@ using UnityEngine.Events;
 
 public class GroundTrigger : MonoBehaviour
 {
-    [SerializeField] private int maxBulletTry = 3;
+    [SerializeField] private int _maxAmmoBullets = 3;
     [SerializeField] private float _timeBeforeFinish = 2f;
     [SerializeField] private UnityEvent OnBulletHitGround;
 
     public int MaxBulletTry
     { 
-        get=> maxBulletTry;
+        get=> _maxAmmoBullets;
         set
         {
-            maxBulletTry = value;
+            _maxAmmoBullets = value;
             OnBulletHitGround.Invoke();
-            if(maxBulletTry == 0)
+            if(_maxAmmoBullets == 0)
             {
-                StartCoroutine(FinishDelay());
+                StartCoroutine(WaitBeforeGameFinish());
             }
         }
     }
-
     private void OnTriggerEnter(Collider other) 
     {
         if(other.gameObject.TryGetComponent(out CannonBullet bullet))
@@ -29,8 +28,7 @@ public class GroundTrigger : MonoBehaviour
             MaxBulletTry -=1;
         }
     }
-
-    IEnumerator FinishDelay()
+    IEnumerator WaitBeforeGameFinish()
     {
         yield return new WaitForSeconds(_timeBeforeFinish);
         CoreSystemUI.instance.SetGameCoreState(false);

@@ -8,14 +8,16 @@ public class SliderUI : MonoBehaviour
     [Header("Slider ping-pong velocity")]
     [SerializeField] private float _sliderSpeed = 0.03f;
     private Slider _sliderComponent;
-    [SerializeField] private bool powerIsIncreasing;
-    [SerializeField] private bool PowerBarON = true;
+
+    [Header("Debug slider bar")]
+    [SerializeField] private bool _isPowerIsIncreasing;
+    [SerializeField] private bool _isPowerBarOn = true;
 
     private void Awake()
     {
         _sliderComponent = GetComponent<Slider>();
         _sliderComponent.value = _sliderComponent.minValue;
-        powerIsIncreasing = true;
+        _isPowerIsIncreasing = true;
         StartCoroutine(UpdateSliderBar());
     }
     private void OnEnable()
@@ -26,24 +28,24 @@ public class SliderUI : MonoBehaviour
 
     IEnumerator UpdateSliderBar()
     {
-        while (PowerBarON == true)
+        while (_isPowerBarOn == true)
         {
-            if (powerIsIncreasing == false)
+            if (_isPowerIsIncreasing == false)
             {
                 _sliderComponent.value -= _sliderSpeed;
 
                 if (_sliderComponent.value <= 0)
                 {
-                    powerIsIncreasing = true;
+                    _isPowerIsIncreasing = true;
                 }
             }
-            if (powerIsIncreasing == true)
+            if (_isPowerIsIncreasing == true)
             {
                 _sliderComponent.value += _sliderSpeed;
 
                 if (_sliderComponent.value >= _sliderComponent.maxValue)
                 {
-                    powerIsIncreasing = false;
+                    _isPowerIsIncreasing = false;
                 }
             }
             yield return new WaitForSeconds(0.02f);

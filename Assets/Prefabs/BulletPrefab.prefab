@@ -125,6 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8084c612d0f514da379e42cff3033b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: 3
-  radius: 2
-  upForce: 0.7
+  _bulletForce: 5
+  _forceRadius: 3
+  _upForce: 1

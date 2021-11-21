@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class RandomSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject[] gameObjects;
-    
+    [SerializeField] private GameObject[] _buildingPrefabs;
     private void Start()
     {
-        gameObjects[Random.Range(0,gameObjects.Length)].SetActive(true);
+        _buildingPrefabs[Random.Range(0,_buildingPrefabs.Length)].SetActive(true);
     }
 }

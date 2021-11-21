@@ -4,9 +4,9 @@ using CreativeVeinStudio.Simple_Pool_Manager;
 public class CannonBullet : MonoBehaviour
 {
     [Header("Debug")]
-    [SerializeField] private float power = 10f;
-    [SerializeField] private float radius = 5f;
-    [SerializeField] private float upForce = 1f;
+    [SerializeField] private float _bulletForce = 5f;
+    [SerializeField] private float _forceRadius = 3f;
+    [SerializeField] private float _upForce = 1f;
 
     private void OnCollisionEnter(Collision other)
     {
@@ -38,7 +38,7 @@ public class CannonBullet : MonoBehaviour
     private void AddExplotion()
     {
         Vector3 explotionPosition = this.transform.position;
-        Collider[] colliders = Physics.OverlapSphere(explotionPosition, radius);
+        Collider[] colliders = Physics.OverlapSphere(explotionPosition, _forceRadius);
 
         foreach (Collider hit in colliders)
         {
@@ -46,7 +46,7 @@ public class CannonBullet : MonoBehaviour
             if(rigidbody !=null)
             {
                 rigidbody.isKinematic = false;
-                rigidbody.AddExplosionForce(power, explotionPosition,radius,upForce, ForceMode.Impulse);
+                rigidbody.AddExplosionForce(_bulletForce, explotionPosition, _forceRadius, _upForce, ForceMode.Impulse);
             }
         }
     }

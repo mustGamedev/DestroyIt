@@ -14,7 +14,7 @@ public class CannonController : MonoBehaviour
     [SerializeField] private float _shootPower = 2f;
 
     [Header("Set your shooting settings")]
-    [SerializeField] private Slider testSlider;
+    [SerializeField] private Slider _gameSlider;
 
     private Rigidbody _bulletPrefabRigidBody;
     private Animator _cannonAnimator;
@@ -27,14 +27,12 @@ public class CannonController : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            CannonShoot();
-        }
-        _shootPower = testSlider.value;
+        if(Input.GetKeyDown(KeyCode.Q)){ CannonShoot(); }
+
+        _shootPower = _gameSlider.value;
     }
 
-    ///<summary>Shoot bullet from cannon</summary>
+    ///<summary>Shoots bullet from cannon</summary>
     public void CannonShoot()
     {
         _cannonAnimator.Play("Armature_animShoot");

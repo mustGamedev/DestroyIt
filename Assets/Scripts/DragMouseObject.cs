@@ -3,34 +3,21 @@ using UnityEngine;
 public class DragMouseObject : MonoBehaviour
 {
     private Vector3 mouseOffset;
-    private float mZCord;
-    [SerializeField] private bool CanBeTouched = true;
+    private float _worldZCordinate;
 
     private void OnMouseDown()
     {
-        mZCord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
-        mouseOffset = gameObject.transform.position - GetMouseWorldPos();
+        _worldZCordinate = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
+        mouseOffset = gameObject.transform.position - GetMouseWorldPosition();
     }
-
-    private Vector3 GetMouseWorldPos()
+    private Vector3 GetMouseWorldPosition()
     {
         Vector3 mousePoint = Input.mousePosition;
-        mousePoint.z = mZCord;
+        mousePoint.z = _worldZCordinate;
         return Camera.main.ScreenToWorldPoint(mousePoint);
     }
-
     private void OnMouseDrag()
     {
-        if(CanBeTouched == true)
-        {
-            transform.position = GetMouseWorldPos() + mouseOffset;
-        }
+        transform.position = GetMouseWorldPosition() + mouseOffset;
     }
-
-    #region OnActionEvents
-    public void CancelTouch()
-    {
-        CanBeTouched = false;
-    }
-    #endregion
 }

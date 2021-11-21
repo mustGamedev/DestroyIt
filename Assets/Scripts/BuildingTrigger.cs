@@ -3,18 +3,19 @@ using UnityEngine;
 
 public class BuildingTrigger : MonoBehaviour
 {
-    [SerializeField] private float _timeBeforeHit = 2f;
+    [Header("Time after bullet hitted the wall")]
+    [SerializeField] private float _timeAfterHit = 2f;
 
     private void OnTriggerEnter(Collider other) 
     {
         if(other.gameObject.TryGetComponent(out CannonBullet bullet))
         {
-            StartCoroutine(WaitSomeTime());
+            StartCoroutine(WaitAfterBulletHit());
         }
     }
-    IEnumerator WaitSomeTime()
+    IEnumerator WaitAfterBulletHit()
     {
-        yield return new WaitForSeconds(_timeBeforeHit);
+        yield return new WaitForSeconds(_timeAfterHit);
         CoreSystemUI.instance.SetGameCoreState(true);
     }
 }
