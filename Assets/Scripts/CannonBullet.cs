@@ -28,7 +28,7 @@ public class CannonBullet : MonoBehaviour
     }
 
     ///<summary>Despawn object with zero velocity</summary>
-    private void DespawnObject()
+    public void DespawnObject()
     {
         SPManager.instance.DisablePoolObject("CanonBalls",this.transform);
         this.GetComponent<Rigidbody>().Sleep();
@@ -43,7 +43,6 @@ public class CannonBullet : MonoBehaviour
         foreach (Collider hit in colliders)
         {
             Rigidbody rigidbody = hit.GetComponent<Rigidbody>();
-
             if(rigidbody !=null)
             {
                 rigidbody.isKinematic = false;

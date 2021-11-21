@@ -34,8 +34,4 @@ public class TouchController : MonoBehaviour
     }
     #endregion
 
-    public void OnNedolet()
-    {
-        gameObject.GetComponent<Animator>().SetTrigger("ToReload");
-    }
 }
